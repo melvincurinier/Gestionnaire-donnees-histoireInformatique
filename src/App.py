@@ -9,9 +9,13 @@ class App(Tk):
     def __init__(self):
         super().__init__()
 
+        self.title("Gestionnaire de données sur l'histoire de l'informatique")
+
         model = Model()
         view = View(self)
         controller = Controller(model, view)
+
+        view.set_controller(controller)
 
         print("App initiated !")
 
