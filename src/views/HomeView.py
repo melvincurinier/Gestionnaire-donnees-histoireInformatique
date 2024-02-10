@@ -86,7 +86,7 @@ class HomeView(ctk.CTkFrame):
         Label(self.info_frame, text='Description briève:').grid(row=2, column=0, sticky='e')
         Label(self.info_frame, text=item_data[3]).grid(row=2, column=1)
 
-        Button(self.info_frame, text='Modifier', command=self.updataDataView_button_click).grid(row=3, column=0)
+        Button(self.info_frame, text='Modifier', command=self.updateDataView_button_click).grid(row=3, column=0)
         Button(self.info_frame, text='Supprimer', command=self.deleteData_button_click).grid(row=3, column=1)
     
     def addDataView_button_click(self):
