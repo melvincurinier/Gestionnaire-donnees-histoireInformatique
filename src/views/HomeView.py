@@ -32,13 +32,16 @@ class HomeView(ctk.CTkFrame):
         importDataView_button.pack(side='left', padx=5)
 
         # Tableau
-        columns = ('type', 'name', 'brief_description')
+        columns = ('id', 'type', 'name', 'brief_description')
         self.tree = ttk.Treeview(self, columns=columns, show='headings')
 
         # Définir les colonnes
+        self.tree.heading('id', text='Identifiant')
         self.tree.heading('type', text='Type')
         self.tree.heading('name', text='Nom')
         self.tree.heading('brief_description', text='Description briève')
+
+        self.tree.column('id',width=100)
 
         self.tree.bind('<ButtonRelease-1>', self.on_tree_click)
 
@@ -50,8 +53,8 @@ class HomeView(ctk.CTkFrame):
         self.info_frame.pack(side='left', padx=10)
 
         data = [
-            ('Personnalité', 'Tillian Dhume', 'Respo réseau Polytech'),
-            ('Personnalité', 'Will Smith', 'Acteur américain'),
+            ('1', 'Personnalité', 'Tillian Dhume', 'Respo réseau Polytech'),
+            ('2', 'Personnalité', 'Will Smith', 'Acteur américain'),
             # Ajoutez autant de lignes que nécessaire
         ]
         for item_data in data:
@@ -75,13 +78,13 @@ class HomeView(ctk.CTkFrame):
 
         # Ajoute des étiquettes avec les informations de l'item
         Label(self.info_frame, text='Type:').grid(row=0, column=0, sticky='e')
-        Label(self.info_frame, text=item_data[0]).grid(row=0, column=1)
+        Label(self.info_frame, text=item_data[1]).grid(row=0, column=1)
 
         Label(self.info_frame, text='Nom:').grid(row=1, column=0, sticky='e')
-        Label(self.info_frame, text=item_data[1]).grid(row=1, column=1)
+        Label(self.info_frame, text=item_data[2]).grid(row=1, column=1)
 
         Label(self.info_frame, text='Description briève:').grid(row=2, column=0, sticky='e')
-        Label(self.info_frame, text=item_data[2]).grid(row=2, column=1)
+        Label(self.info_frame, text=item_data[3]).grid(row=2, column=1)
     
     def addDataView_button_click(self):
         self.app.switch_to_addData_view()
