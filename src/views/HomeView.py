@@ -85,9 +85,18 @@ class HomeView(ctk.CTkFrame):
 
         Label(self.info_frame, text='Description briève:').grid(row=2, column=0, sticky='e')
         Label(self.info_frame, text=item_data[3]).grid(row=2, column=1)
+
+        Button(self.info_frame, text='Modifier', command=self.updataDataView_button_click).grid(row=3, column=0)
+        Button(self.info_frame, text='Supprimer', command=self.deleteData_button_click).grid(row=3, column=1)
     
     def addDataView_button_click(self):
         self.app.switch_to_addData_view()
+
+    def updataDataView_button_click(self):
+        self.app.switch_to_updateData_view()
+    
+    def deleteData_button_click(self):
+        self.app.show_delete_view()
     
     def searchView_button_click(self):
         print("Bouton recherche avancée cliqué!")

@@ -1,6 +1,7 @@
 import customtkinter as ctk
 
 from views.AddDataView import AddDataView
+from views.UpdateDataView import UpdateDataView
 from views.HomeView import HomeView
 
 class App:
@@ -24,6 +25,10 @@ class App:
     def show_addData_view(self):
         addData_view = AddDataView(self.container, self)
         addData_view.pack()
+    
+    def show_updateData_view(self):
+        updateData_view = UpdateDataView(self.container, self)
+        updateData_view.pack()
 
     def switch_to_home_view(self):
         self.clear_container()
@@ -32,6 +37,10 @@ class App:
     def switch_to_addData_view(self):
         self.clear_container()
         self.show_addData_view()
+    
+    def switch_to_updateData_view(self):
+        self.clear_container()
+        self.show_updateData_view()
 
     def clear_container(self):
         self.container.pack_forget()
