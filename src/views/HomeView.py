@@ -20,7 +20,7 @@ class HomeView(ctk.CTkFrame):
         addDataView_button.pack(side='left')
 
         # Bouton Recherche avancée
-        searchView_button = Button(title_frame, text='Recherche avancée', command=self.searchView_button_click)
+        searchView_button = Button(title_frame, text='Recherche avancée', command=self.searchDataView_button_click)
         searchView_button.pack(side='left', padx=5)
 
         # Bouton Exporter une donnée
@@ -92,17 +92,17 @@ class HomeView(ctk.CTkFrame):
     def addDataView_button_click(self):
         self.app.switch_to_addData_view()
 
-    def updataDataView_button_click(self):
+    def updateDataView_button_click(self):
         self.app.switch_to_updateData_view()
+    
+    def searchDataView_button_click(self):
+        self.app.switch_to_searchData_view()
     
     def deleteData_button_click(self):
         self.app.show_deleteData_view()
     
-    def searchView_button_click(self):
-        print("Bouton recherche avancée cliqué!")
-    
     def exportDataView_button_click(self):
-        print("Bouton exporter cliqué!")
+        self.app.show_importData_view()
     
     def importDataView_button_click(self):
-        print("Bouton importer cliqué!")
+        self.app.show_exportData_view()
