@@ -96,7 +96,7 @@ class HomeView(ctk.CTkFrame):
         self.app.switch_to_updateData_view()
     
     def deleteData_button_click(self):
-        self.app.show_delete_view()
+        self.app.show_deleteData_view()
     
     def searchView_button_click(self):
         print("Bouton recherche avancée cliqué!")

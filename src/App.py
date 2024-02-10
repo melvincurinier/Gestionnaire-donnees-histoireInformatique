@@ -29,6 +29,9 @@ class App:
     def show_updateData_view(self):
         updateData_view = UpdateDataView(self.container, self)
         updateData_view.pack()
+    
+    def show_deleteData_view(self):
+        print('Delete Data !')
 
     def switch_to_home_view(self):
         self.clear_container()
