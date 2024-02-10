@@ -84,7 +84,7 @@ class HomeView(ctk.CTkFrame):
         Label(self.info_frame, text=item_data[2]).grid(row=2, column=1)
     
     def addDataView_button_click(self):
-        print("Bouton ajouter une donnée cliqué!")
+        self.app.switch_to_addData_view()
     
     def searchView_button_click(self):
         print("Bouton recherche avancée cliqué!")
