@@ -4,6 +4,7 @@ from views.AddDataView import AddDataView
 from views.SearchDataView import SearchDataView
 from views.UpdateDataView import UpdateDataView
 from views.HomeView import HomeView
+from views.MenuView import MenuView
 
 class App:
     def __init__(self):
@@ -15,38 +16,38 @@ class App:
         self.container = ctk.CTkFrame(self.root_tk)
         self.container.pack(fill='both', expand=True)
 
-        self.show_home_view()
+        self.show_menu_view()
 
         print("App initiated !")
 
-    def show_home_view(self):
-        home_view = HomeView(self.container, self)
-        home_view.pack()
+    def show_menu_view(self):
+        menu_view = MenuView(self.container, self)
+        menu_view.pack()
     
     def show_addData_view(self):
         addData_view = AddDataView(self.container, self)
         addData_view.pack()
+        
+    def show_searchData_view(self):
+        searchData_view = SearchDataView(self.container, self)
+        searchData_view.pack()
+    
+    def show_importData_view(self):
+        print('Import Data !')
     
     def show_updateData_view(self):
         updateData_view = UpdateDataView(self.container, self)
         updateData_view.pack()
     
-    def show_searchData_view(self):
-        searchData_view = SearchDataView(self.container, self)
-        searchData_view.pack()
+    def show_exportData_view(self):
+        print('Export Data !')
     
     def show_deleteData_view(self):
         print('Delete Data !')
     
-    def show_importData_view(self):
-        print('Import Data !')
-    
-    def show_exportData_view(self):
-        print('Export Data !')
-
-    def switch_to_home_view(self):
+    def switch_to_menu_view(self):
         self.clear_container()
-        self.show_home_view()
+        self.show_menu_view()
 
     def switch_to_addData_view(self):
         self.clear_container()
@@ -59,7 +60,11 @@ class App:
     def switch_to_searchData_view(self):
         self.clear_container()
         self.show_searchData_view()
-
+    
+    # def switch_to_resultSearch_view(self):
+        # self.clear_container()
+        # self.show_resultSearch_view()
+    
     def clear_container(self):
         self.container.pack_forget()
         self.container = ctk.CTkFrame(self.root_tk)
