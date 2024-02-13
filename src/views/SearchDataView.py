@@ -11,9 +11,13 @@ class SearchDataView(ctk.CTkFrame):
         title_frame = ctk.CTkFrame(self)
         title_frame.pack(side='top', fill='x')
 
+        # Bouton "Retour"
+        return_button = Button(title_frame, text='Retour', command=app.switch_to_menu_view)
+        return_button.grid(row=0, column=0, padx=5, pady=5, sticky='w')
+
         # Titre principal
         title_label = Label(title_frame, text='Recherche une donnée')
-        title_label.pack(padx=10)
+        title_label.grid(row=0, column=1, padx=10)
 
         # Frame pour les champs de recherche
         self.research_frame = ctk.CTkFrame(self)
@@ -27,7 +31,6 @@ class SearchDataView(ctk.CTkFrame):
         self.listbox_category.grid(row=0, column=1, padx=5, pady=5)
         self.listbox_category.bind('<<ListboxSelect>>', self.update_search_fields)
 
-        # Ajout d'éléments à la liste (exemple)
         self.listbox_category.insert(1, 'Personnalité')
         self.listbox_category.insert(2, 'Entreprise')
         self.listbox_category.insert(3, 'Technologie')
