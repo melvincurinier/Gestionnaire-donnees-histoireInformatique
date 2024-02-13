@@ -38,8 +38,8 @@ class SearchDataView(ctk.CTkFrame):
         self.dynamic_entries = []
 
         # Bouton de recherche
-        search_button = Button(self.research_frame, text='Rechercher', command=self.perform_search)
-        search_button.grid(row=3, column=0, columnspan=2, pady=10)
+        self.search_button = Button(self.research_frame, text='Rechercher', command=self.perform_search)
+        self.search_button.grid(row=3, column=0, columnspan=2, pady=10)
 
         print("Search Data View initiated !")
 
@@ -72,88 +72,186 @@ class SearchDataView(ctk.CTkFrame):
         self.dynamic_entries = []
 
     def create_personality_search_fields(self):
-        # Crée les champs de recherche spécifiques à la catégorie 'Personnalité'
-        label_name = Label(self.research_frame, text='Nom:')
-        label_name.grid(row=1, column=0, padx=5, pady=5)
+        label_lastname = Label(self.research_frame, text='Nom:')
+        label_lastname.grid(row=1, column=0, padx=5, pady=5)
+        entry_lastname = Entry(self.research_frame)
+        entry_lastname.grid(row=1, column=1, padx=5, pady=5)
 
-        entry_name = Entry(self.research_frame)
-        entry_name.grid(row=1, column=1, padx=5, pady=5)
-        self.dynamic_entries.append(label_name)
-        self.dynamic_entries.append(entry_name)
+        self.dynamic_entries.append(label_lastname)
+        self.dynamic_entries.append(entry_lastname)
+
+        label_firstname = Label(self.research_frame, text='Prénom:')
+        label_firstname.grid(row=2, column=0, padx=5, pady=5)
+        entry_firstname = Entry(self.research_frame)
+        entry_firstname.grid(row=2, column=1, padx=5, pady=5)
+
+        self.dynamic_entries.append(label_firstname)
+        self.dynamic_entries.append(entry_firstname)
+
+        label_birthdate = Label(self.research_frame, text='Année de naissance:')
+        label_birthdate.grid(row=3, column=0, padx=5, pady=5)
+        entry_birthdate = Entry(self.research_frame)
+        entry_birthdate.grid(row=3, column=1, padx=5, pady=5)
+        
+        self.dynamic_entries.append(label_birthdate)
+        self.dynamic_entries.append(entry_birthdate)
+
+        label_deathdate = Label(self.research_frame, text='Année de décès:')
+        label_deathdate.grid(row=4, column=0, padx=5, pady=5)
+        entry_deathdate = Entry(self.research_frame)
+        entry_deathdate.grid(row=4, column=1, padx=5, pady=5)
+        
+        self.dynamic_entries.append(label_deathdate)
+        self.dynamic_entries.append(entry_deathdate)
+
+        label_keyword = Label(self.research_frame, text='Mot-clé:')
+        label_keyword.grid(row=5, column=0, padx=5, pady=5)
+        entry_keyword = Entry(self.research_frame)
+        entry_keyword.grid(row=5, column=1, padx=5, pady=5)
+
+        self.dynamic_entries.append(label_keyword)
+        self.dynamic_entries.append(entry_keyword)
+
+        self.search_button.grid(row=6, column=0, columnspan=2, pady=10)
 
     def create_company_search_fields(self):
-        # Crée les champs de recherche spécifiques à la catégorie 'Entreprise'
-        label_company_name = Label(self.research_frame, text='Nom de l\'entreprise:')
+        label_company_name = Label(self.research_frame, text='Nom:')
         label_company_name.grid(row=1, column=0, padx=5, pady=5)
-
         entry_company_name = Entry(self.research_frame)
         entry_company_name.grid(row=1, column=1, padx=5, pady=5)
+
         self.dynamic_entries.append(label_company_name)
         self.dynamic_entries.append(entry_company_name)
 
         label_location = Label(self.research_frame, text='Emplacement:')
         label_location.grid(row=2, column=0, padx=5, pady=5)
-
         entry_location = Entry(self.research_frame)
         entry_location.grid(row=2, column=1, padx=5, pady=5)
+
         self.dynamic_entries.append(label_location)
         self.dynamic_entries.append(entry_location)
 
-    def create_technology_search_fields(self):
-        # Crée les champs de recherche spécifiques à la catégorie 'Technologie'
-        label_technology_name = Label(self.research_frame, text='Nom de la technologie:')
-        label_technology_name.grid(row=1, column=0, padx=5, pady=5)
+        label_creationdate = Label(self.research_frame, text='Année de création:')
+        label_creationdate.grid(row=3, column=0, padx=5, pady=5)
+        entry_creationdate = Entry(self.research_frame)
+        entry_creationdate.grid(row=3, column=1, padx=5, pady=5)
 
-        entry_technology_name = Entry(self.research_frame)
-        entry_technology_name.grid(row=1, column=1, padx=5, pady=5)
-        self.dynamic_entries.append(label_technology_name)
-        self.dynamic_entries.append(entry_technology_name)
+        self.dynamic_entries.append(label_creationdate)
+        self.dynamic_entries.append(entry_creationdate)
+
+        label_keyword = Label(self.research_frame, text='Mot-clé:')
+        label_keyword.grid(row=4, column=0, padx=5, pady=5)
+        entry_keyword = Entry(self.research_frame)
+        entry_keyword.grid(row=4, column=1, padx=5, pady=5)
+
+        self.dynamic_entries.append(label_keyword)
+        self.dynamic_entries.append(entry_keyword)
+
+        self.search_button.grid(row=5, column=0, columnspan=2, pady=10)
+
+    def create_technology_search_fields(self):
+        label_name = Label(self.research_frame, text='Nom:')
+        label_name.grid(row=1, column=0, padx=5, pady=5)
+        entry_name = Entry(self.research_frame)
+        entry_name.grid(row=1, column=1, padx=5, pady=5)
+
+        self.dynamic_entries.append(label_name)
+        self.dynamic_entries.append(entry_name)
+
+        label_type = Label(self.research_frame, text='Type:')
+        label_type.grid(row=2, column=0, padx=5, pady=5)
+        entry_type = Entry(self.research_frame)
+        entry_type.grid(row=2, column=1, padx=5, pady=5)
+
+        self.dynamic_entries.append(label_type)
+        self.dynamic_entries.append(entry_type)
 
         label_year = Label(self.research_frame, text='Année de développement:')
-        label_year.grid(row=2, column=0, padx=5, pady=5)
-
+        label_year.grid(row=3, column=0, padx=5, pady=5)
         entry_year = Entry(self.research_frame)
-        entry_year.grid(row=2, column=1, padx=5, pady=5)
+        entry_year.grid(row=3, column=1, padx=5, pady=5)
+
         self.dynamic_entries.append(label_year)
         self.dynamic_entries.append(entry_year)
 
+        label_keyword = Label(self.research_frame, text='Mot-clé:')
+        label_keyword.grid(row=4, column=0, padx=5, pady=5)
+        entry_keyword = Entry(self.research_frame)
+        entry_keyword.grid(row=4, column=1, padx=5, pady=5)
+
+        self.dynamic_entries.append(label_keyword)
+        self.dynamic_entries.append(entry_keyword)
+
+        self.search_button.grid(row=5, column=0, columnspan=2, pady=10)
+
     def create_event_search_fields(self):
-        # Crée les champs de recherche spécifiques à la catégorie 'Evénement'
-        label_event_name = Label(self.research_frame, text='Nom de l\'événement:')
-        label_event_name.grid(row=1, column=0, padx=5, pady=5)
+        label_event_title = Label(self.research_frame, text='Titre:')
+        label_event_title.grid(row=1, column=0, padx=5, pady=5)
+        entry_event_title = Entry(self.research_frame)
+        entry_event_title.grid(row=1, column=1, padx=5, pady=5)
 
-        entry_event_name = Entry(self.research_frame)
-        entry_event_name.grid(row=1, column=1, padx=5, pady=5)
-        self.dynamic_entries.append(label_event_name)
-        self.dynamic_entries.append(entry_event_name)
+        self.dynamic_entries.append(label_event_title)
+        self.dynamic_entries.append(entry_event_title)
 
-        label_date = Label(self.research_frame, text='Date de l\'événement:')
+        label_date = Label(self.research_frame, text='Date:')
         label_date.grid(row=2, column=0, padx=5, pady=5)
-
         entry_date = Entry(self.research_frame)
         entry_date.grid(row=2, column=1, padx=5, pady=5)
+
         self.dynamic_entries.append(label_date)
         self.dynamic_entries.append(entry_date)
 
-    def create_price_search_fields(self):
-        # Crée les champs de recherche spécifiques à la catégorie 'Prix'
-        label_price_name = Label(self.research_frame, text='Nom du prix:')
-        label_price_name.grid(row=1, column=0, padx=5, pady=5)
+        label_location = Label(self.research_frame, text='Lieu:')
+        label_location.grid(row=3, column=0, padx=5, pady=5)
+        entry_location = Entry(self.research_frame)
+        entry_location.grid(row=3, column=1, padx=5, pady=5)
 
+        self.dynamic_entries.append(label_location)
+        self.dynamic_entries.append(entry_location)
+
+        label_keyword = Label(self.research_frame, text='Mot-clé:')
+        label_keyword.grid(row=4, column=0, padx=5, pady=5)
+        entry_keyword = Entry(self.research_frame)
+        entry_keyword.grid(row=4, column=1, padx=5, pady=5)
+
+        self.dynamic_entries.append(label_keyword)
+        self.dynamic_entries.append(entry_keyword)
+
+        self.search_button.grid(row=5, column=0, columnspan=2, pady=10)
+
+    def create_price_search_fields(self):
+        label_price_name = Label(self.research_frame, text='Nom:')
+        label_price_name.grid(row=1, column=0, padx=5, pady=5)
         entry_price_name = Entry(self.research_frame)
         entry_price_name.grid(row=1, column=1, padx=5, pady=5)
+
         self.dynamic_entries.append(label_price_name)
         self.dynamic_entries.append(entry_price_name)
 
-        label_year = Label(self.research_frame, text='Année du prix:')
+        label_year = Label(self.research_frame, text='Année de création:')
         label_year.grid(row=2, column=0, padx=5, pady=5)
-
         entry_year = Entry(self.research_frame)
         entry_year.grid(row=2, column=1, padx=5, pady=5)
+
         self.dynamic_entries.append(label_year)
         self.dynamic_entries.append(entry_year)
+
+        label_keyword = Label(self.research_frame, text='Mot-clé:')
+        label_keyword.grid(row=3, column=0, padx=5, pady=5)
+        entry_keyword = Entry(self.research_frame)
+        entry_keyword.grid(row=3, column=1, padx=5, pady=5)
+
+        self.dynamic_entries.append(label_keyword)
+        self.dynamic_entries.append(entry_keyword)
+
+        self.search_button.grid(row=4, column=0, columnspan=2, pady=10)
 
     def perform_search(self):
         selected_id_category = self.listbox_category.curselection()
         category = self.listbox_category.get(selected_id_category)
         print("Recherche - Catégorie sélectionné:", category)
+
+        for widget in self.dynamic_entries:
+            if isinstance(widget, Entry):
+                value = widget.get()
+                print(f"Valeur de l'Entry : {value}")
