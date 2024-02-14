@@ -24,8 +24,8 @@ class App:
         menu_view = MenuView(self.container, self)
         menu_view.pack()
 
-    def show_dashboard_view(self):
-        dashboard_view = DashboardView(self.container, self)
+    def show_dashboard_view(self, category, searchdata):
+        dashboard_view = DashboardView(self.container, self, category, searchdata)
         dashboard_view.pack()
     
     def show_addData_view(self):
@@ -53,9 +53,9 @@ class App:
         self.clear_container()
         self.show_menu_view()
     
-    def switch_to_dashboard_view(self):
+    def switch_to_dashboard_view(self, category, searchdata):
         self.clear_container()
-        self.show_dashboard_view()
+        self.show_dashboard_view(category, searchdata)
 
     def switch_to_addData_view(self):
         self.clear_container()

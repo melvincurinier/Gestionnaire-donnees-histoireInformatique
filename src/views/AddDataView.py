@@ -47,16 +47,12 @@ class AddDataView(ctk.CTkFrame):
         print("add Data View initiated !")
 
     def update_add_fields(self, event):
-        # Supprime les champs de recherche existants
         self.clear_dynamic_entries()
 
         selected_index_category = self.listbox_category.curselection()
 
         if selected_index_category:
             category = self.listbox_category.get(selected_index_category)
-            print("Recherche - Catégorie sélectionnée:", category)
-
-            # Crée les champs de recherche spécifiques à la catégorie
             if category == 'Personnalité':
                 self.create_personality_add_fields()
             elif category == 'Entreprise':
@@ -251,13 +247,14 @@ class AddDataView(ctk.CTkFrame):
     def perform_add_element(self):
         selected_id_category = self.listbox_category.curselection()
         category = self.listbox_category.get(selected_id_category)
-        print("Recherche - Catégorie sélectionné:", category)
 
+        data=[]
         for widget in self.dynamic_entries:
             if isinstance(widget, Entry):
                 value = widget.get()
-                print(f"Valeur de l'Entry : {value}")
+                data.append(value)
             if isinstance(widget, Text):
                 value = widget.get("1.0", "end-1c")
-                print(f"Valeur de Text : {value}")
-        self.app.switch_to_dashboard_view()
+                data.append(value)
+        
+        self.app.switch_to_dashboard_view(category, None)

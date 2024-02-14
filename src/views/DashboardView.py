@@ -2,7 +2,7 @@ import customtkinter as ctk
 from tkinter import ttk, Label, Button
 
 class DashboardView(ctk.CTkFrame):
-    def __init__(self, parent, app):
+    def __init__(self, parent, app, category, searchdata):
         ctk.CTkFrame.__init__(self, parent)
 
         self.app = app
@@ -38,6 +38,9 @@ class DashboardView(ctk.CTkFrame):
         # Frame à droite du tableau pour afficher les informations de l'item
         self.info_frame = ctk.CTkFrame(self)
         self.info_frame.pack(side='left', padx=10)
+
+        print(category)
+        print(searchdata)
 
         data = [
             ('1', 'Tillian Dhume', 'Respo réseau Polytech'),

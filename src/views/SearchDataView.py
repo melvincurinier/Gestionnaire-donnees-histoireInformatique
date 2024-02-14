@@ -47,16 +47,12 @@ class SearchDataView(ctk.CTkFrame):
         print("Search Data View initiated !")
 
     def update_search_fields(self, event):
-        # Supprime les champs de recherche existants
         self.clear_dynamic_entries()
 
         selected_index_category = self.listbox_category.curselection()
 
         if selected_index_category:
             category = self.listbox_category.get(selected_index_category)
-            print("Recherche - Catégorie sélectionnée:", category)
-
-            # Crée les champs de recherche spécifiques à la catégorie
             if category == 'Personnalité':
                 self.create_personality_search_fields()
             elif category == 'Entreprise':
@@ -251,11 +247,11 @@ class SearchDataView(ctk.CTkFrame):
     def perform_search(self):
         selected_id_category = self.listbox_category.curselection()
         category = self.listbox_category.get(selected_id_category)
-        print("Recherche - Catégorie sélectionné:", category)
 
+        searchdata = []
         for widget in self.dynamic_entries:
             if isinstance(widget, Entry):
                 value = widget.get()
-                print(f"Valeur de l'Entry : {value}")
+                searchdata.append(value)
         
-        self.app.switch_to_dashboard_view()
+        self.app.switch_to_dashboard_view(category, searchdata)
