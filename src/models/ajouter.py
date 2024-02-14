@@ -33,7 +33,7 @@ def ajouter_une_technologie(Nom, Date_de_creation, Description, Type):
             host="localhost",
             database = 'my_data',
             user ='root',
-            password = 'root'
+            password = ''
         )
         cursor = conn.cursor()
         req = 'INSERT INTO technologie(ID_technologie, Titre, Date, Description, Type) VALUES (%s, %s, %s, %s, %s)'
@@ -56,7 +56,7 @@ def ajouter_un_evenement(Titre, Date, Lieu, Description):
             host="localhost",
             database = 'my_data',
             user ='root',
-            password = 'root'
+            password = ''
         )
         cursor = conn.cursor()
         req = 'INSERT INTO evenement(Id_Evenement, Titre, Date, Lieu, Description) VALUES (%s, %s, %s, %s, %s)'

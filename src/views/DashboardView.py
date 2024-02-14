@@ -1,6 +1,6 @@
 import customtkinter as ctk
 from tkinter import ttk, Label, Button
-from models.supprimer import supprimer_une_personnalite
+from models.supprimer import *
 
 
 class DashboardView(ctk.CTkFrame):
@@ -8,6 +8,7 @@ class DashboardView(ctk.CTkFrame):
         ctk.CTkFrame.__init__(self, parent)
 
         self.app = app
+        self.category = category
 
         # Frame pour le titre et les boutons
         title_frame = ctk.CTkFrame(self)
@@ -21,12 +22,10 @@ class DashboardView(ctk.CTkFrame):
         title_label = Label(title_frame, text='Tableau d\'informations')
         title_label.grid(row=0, column=1, padx=10)
 
-        if category == "Personnalité":
-            # Tableau
+        if self.category == "Personnalité":
             columns = ('id', 'name', 'birthdate', 'deathdate', 'description')
             self.tree = ttk.Treeview(self, columns=columns, show='headings')
 
-            # Définir les colonnes
             self.tree.heading('id', text='Identifiant')
             self.tree.heading('name', text='Nom')
             self.tree.heading('birthdate', text='Année de naissance')
@@ -34,8 +33,7 @@ class DashboardView(ctk.CTkFrame):
             self.tree.heading('description', text='Description')
 
             self.tree.column('id',width=100)
-        elif category == "Technologie":
-            # Tableau
+        elif self.category == "Technologie":
             columns = ('id', 'title', 'creationdate', 'description')
             self.tree = ttk.Treeview(self, columns=columns, show='headings')
 
@@ -43,17 +41,29 @@ class DashboardView(ctk.CTkFrame):
             self.tree.heading('title', text='Titre')
             self.tree.heading('creationdate', text='Année de création')
             self.tree.heading('description', text='Description')
+        elif self.category == "Evénement":
+            columns = ('id', 'title', 'date', 'location', 'description')
+            self.tree = ttk.Treeview(self, columns=columns, show='headings')
+
+            self.tree.heading('id', text='Identifiant')
+            self.tree.heading('title', text='Titre')
+            self.tree.heading('date', text='Année')
+            self.tree.heading('location', text='Lieu')
+            self.tree.heading('description', text='Description')
+        else:
+            columns = ('id', 'nom', 'date', 'description')
+            self.tree = ttk.Treeview(self, columns=columns, show='headings')
 
         self.tree.bind('<ButtonRelease-1>', self.on_tree_click)
 
         # Pack the Treeview widget
-        self.tree.pack(side='left', expand=True, fill='both')
+        self.tree.pack(side='left', expand=False, fill='both')
 
         # Frame à droite du tableau pour afficher les informations de l'item
         self.info_frame = ctk.CTkFrame(self)
         self.info_frame.pack(side='left', padx=10)
       
-        if(data != None):
+        if data:
             for item_data in data:
                 self.add_item(item_data)
 
@@ -93,12 +103,16 @@ class DashboardView(ctk.CTkFrame):
         self.app.switch_to_searchData_view()
     
     def deleteData_button_click(self, id, item):
-        supprimer_une_personnalite(id)
+        if self.category == "Personnalité":
+            supprimer_une_personnalite(id)
+        elif self.category == "Technologie":
+            supprimer_une_technologie(id)
+        elif self.category == "Evénement":
+            supprimer_un_evenement(id)
         self.tree.delete(item)
         # Efface les anciennes étiquettes
         for widget in self.info_frame.winfo_children():
             widget.destroy()
-        
     
     def exportDataView_button_click(self):
         self.app.show_importData_view()

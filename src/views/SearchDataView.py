@@ -259,5 +259,10 @@ class SearchDataView(ctk.CTkFrame):
                 data = rechercher_une_technologie(searchdata[0])
             else:
                 data = afficher_les_technologies()
+        elif(category == "Evénement"):
+            if(searchdata[0] != ''):
+                data = rechercher_un_evenement(searchdata[0])
+            else:
+                data = afficher_les_evenements()
         
         self.app.switch_to_dashboard_view(category, data)

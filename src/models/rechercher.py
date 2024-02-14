@@ -44,7 +44,7 @@ def rechercher_un_evenement(Titre):
             host="localhost",
             database = 'my_data',
             user ='root',
-            password = 'root'
+            password = ''
         )
         cursor = conn.cursor()
         afficher.afficher_un_evenement(Titre)
@@ -62,7 +62,7 @@ def rechercher_une_categorie(Nom):
             host="localhost",
             database = 'my_data',
             user ='root',
-            password = 'root'
+            password = ''
         )
         cursor = conn.cursor()
         afficher.afficher_une_categorie(Nom)

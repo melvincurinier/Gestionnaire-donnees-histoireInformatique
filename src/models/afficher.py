@@ -95,14 +95,13 @@ def afficher_les_evenements():
             host="localhost",
             database = 'my_data',
             user ='root',
-            password = 'root'
+            password = ''
         )
         cursor = conn.cursor()
         req = 'SELECT * FROM evenement'
         cursor.execute(req)
         evenlist = cursor.fetchall()
-        for even in evenlist:
-            print('Titre : {}'.format(even[1]), 'Date : {}'.format(even[2]), 'Lieu : {}'.format(even[3]))
+        return evenlist
     except MC.Error as e:
         print(e)
     finally:
@@ -117,15 +116,14 @@ def afficher_un_evenement(Titre):
             host="localhost",
             database = 'my_data',
             user ='root',
-            password = 'root'
+            password = ''
         )
         cursor = conn.cursor()
         req = 'SELECT * FROM evenement WHERE Titre = %s'
         infos = (Titre,)
         cursor.execute(req, infos)
         evenlist = cursor.fetchall()
-        for even in evenlist:
-            print('Titre : {}'.format(even[1]), 'Date : {}'.format(even[2]), 'Lieu : {}'.format(even[3]))
+        return evenlist
     except MC.Error as e:
         print(e)
     finally:
