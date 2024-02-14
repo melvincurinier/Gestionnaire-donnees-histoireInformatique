@@ -3,7 +3,7 @@ import customtkinter as ctk
 from views.AddDataView import AddDataView
 from views.SearchDataView import SearchDataView
 from views.UpdateDataView import UpdateDataView
-from views.HomeView import HomeView
+from views.DashboardView import DashboardView
 from views.MenuView import MenuView
 
 class App:
@@ -23,6 +23,10 @@ class App:
     def show_menu_view(self):
         menu_view = MenuView(self.container, self)
         menu_view.pack()
+
+    def show_dashboard_view(self):
+        dashboard_view = DashboardView(self.container, self)
+        dashboard_view.pack()
     
     def show_addData_view(self):
         addData_view = AddDataView(self.container, self)
@@ -48,6 +52,10 @@ class App:
     def switch_to_menu_view(self):
         self.clear_container()
         self.show_menu_view()
+    
+    def switch_to_dashboard_view(self):
+        self.clear_container()
+        self.show_dashboard_view()
 
     def switch_to_addData_view(self):
         self.clear_container()

@@ -258,3 +258,5 @@ class SearchDataView(ctk.CTkFrame):
             if isinstance(widget, Entry):
                 value = widget.get()
                 print(f"Valeur de l'Entry : {value}")
+        
+        self.app.switch_to_dashboard_view()

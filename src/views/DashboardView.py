@@ -1,7 +1,7 @@
 import customtkinter as ctk
 from tkinter import ttk, Label, Button
 
-class HomeView(ctk.CTkFrame):
+class DashboardView(ctk.CTkFrame):
     def __init__(self, parent, app):
         ctk.CTkFrame.__init__(self, parent)
 
@@ -11,25 +11,13 @@ class HomeView(ctk.CTkFrame):
         title_frame = ctk.CTkFrame(self)
         title_frame.pack(side='top', fill='x')
 
+        # Bouton "Retour"
+        return_button = Button(title_frame, text='Retour', command=app.switch_to_searchData_view)
+        return_button.grid(row=0, column=0, sticky='w')
+
         # Titre principal
         title_label = Label(title_frame, text='Tableau d\'informations')
-        title_label.pack(padx=10)
-
-        # Bouton Ajouter une donnée
-        addDataView_button = Button(title_frame, text='Ajouter une donnée', command=self.addDataView_button_click)
-        addDataView_button.pack(side='left')
-
-        # Bouton Recherche avancée
-        searchView_button = Button(title_frame, text='Recherche avancée', command=self.searchDataView_button_click)
-        searchView_button.pack(side='left', padx=5)
-
-        # Bouton Exporter une donnée
-        exportDataView_button = Button(title_frame, text='Exporter', command=self.exportDataView_button_click)
-        exportDataView_button.pack(side='left')
-
-        # Bouton Importer une donnée
-        importDataView_button = Button(title_frame, text='Importer', command=self.importDataView_button_click)
-        importDataView_button.pack(side='left', padx=5)
+        title_label.grid(row=0, column=1, padx=10)
 
         # Tableau
         columns = ('id', 'type', 'name', 'brief_description')
