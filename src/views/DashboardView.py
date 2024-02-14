@@ -20,7 +20,7 @@ class DashboardView(ctk.CTkFrame):
         title_label = Label(title_frame, text='Tableau d\'informations')
         title_label.grid(row=0, column=1, padx=10)
 
-        Button(title_frame, text='Exporter', command=lambda: self.exportDataView_button_click).grid(row=0, column=2)
+        Button(title_frame, text='Exporter', command=lambda: self.exportDataView_button_click()).grid(row=0, column=2)
 
         if self.category == "Personnalité":
             columns = ('id', 'name', 'birthdate', 'deathdate', 'description')
