@@ -1,19 +1,17 @@
 import mysql.connector as MC
-    
-def supprimer_une_personnalite(Id_personnalite):
+from models import afficher
+
+
+def rechercher_une_personnalite(Prenom):
     try:
         conn = MC.connect(
             host="localhost",
             database = 'my_data',
             user ='root',
-            password = 'root'
+            password = ''
         )
         cursor = conn.cursor()
-        req = 'DELETE FROM personnalites WHERE Id_personnalite = %s'
-        infos = (Id_personnalite,)
-        cursor.execute(req, infos)
-        conn.commit()
-        print('Suppression effectuée avec succès')
+        return afficher.afficher_une_personnalite(Prenom)
     except MC.Error as e:
         print(e)
     finally:
@@ -22,20 +20,16 @@ def supprimer_une_personnalite(Id_personnalite):
             conn.close()
             print("MySQL connection is closed")
 
-def supprimer_une_technologie(Id_technologie):
+def rechercher_une_technologie(Nom):
     try:
         conn = MC.connect(
             host="localhost",
             database = 'my_data',
             user ='root',
-            password = 'root'
+            password = ''
         )
         cursor = conn.cursor()
-        req = 'DELETE FROM technologie WHERE ID_technologie = %s'
-        infos = (Id_technologie,)
-        cursor.execute(req, infos)
-        conn.commit()
-        print('Suppression effectuée avec succès')
+        return afficher.afficher_une_technologie(Nom)
     except MC.Error as e:
         print(e)
     finally:
@@ -44,7 +38,7 @@ def supprimer_une_technologie(Id_technologie):
             conn.close()
             print("MySQL connection is closed")
 
-def supprimer_un_evenement(Id_evenement):
+def rechercher_un_evenement(Titre):
     try:
         conn = MC.connect(
             host="localhost",
@@ -53,11 +47,7 @@ def supprimer_un_evenement(Id_evenement):
             password = 'root'
         )
         cursor = conn.cursor()
-        req = 'DELETE FROM evenement WHERE Id_Evenement = %s'
-        infos = (Id_evenement,)
-        cursor.execute(req, infos)
-        conn.commit()
-        print('Suppression effectuée avec succès')
+        afficher.afficher_un_evenement(Titre)
     except MC.Error as e:
         print(e)
     finally:
@@ -66,7 +56,7 @@ def supprimer_un_evenement(Id_evenement):
             conn.close()
             print("MySQL connection is closed")
 
-def supprimer_une_categorie(Id_categorie):
+def rechercher_une_categorie(Nom):
     try:
         conn = MC.connect(
             host="localhost",
@@ -75,11 +65,7 @@ def supprimer_une_categorie(Id_categorie):
             password = 'root'
         )
         cursor = conn.cursor()
-        req = 'DELETE FROM categorie WHERE Id_categorie = %s'
-        infos = (Id_categorie,)
-        cursor.execute(req, infos)
-        conn.commit()
-        print('Suppression effectuée avec succès')
+        afficher.afficher_une_categorie(Nom)
     except MC.Error as e:
         print(e)
     finally:

@@ -8,7 +8,7 @@ def modifier_prenom_une_personnalite(Prenom, Id_personnalite):
             host="localhost",
             database = 'my_data',
             user = 'root',
-            password = 'root'
+            password = ''
         )
         cursor = conn.cursor()
         req = 'UPDATE personnalites SET Prenom = %s WHERE Id_personnalite = %s'

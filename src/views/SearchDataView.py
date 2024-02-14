@@ -1,6 +1,9 @@
 import customtkinter as ctk
 from tkinter import Label, Button, Entry, Listbox
 
+from models.rechercher import *
+from models.afficher import *
+
 class SearchDataView(ctk.CTkFrame):
     def __init__(self, parent, app):
         ctk.CTkFrame.__init__(self, parent)
@@ -78,39 +81,31 @@ class SearchDataView(ctk.CTkFrame):
         self.dynamic_entries.append(label_lastname)
         self.dynamic_entries.append(entry_lastname)
 
-        label_firstname = Label(self.research_frame, text='Prénom:')
-        label_firstname.grid(row=2, column=0, padx=5, pady=5)
-        entry_firstname = Entry(self.research_frame)
-        entry_firstname.grid(row=2, column=1, padx=5, pady=5)
-
-        self.dynamic_entries.append(label_firstname)
-        self.dynamic_entries.append(entry_firstname)
-
         label_birthdate = Label(self.research_frame, text='Année de naissance:')
-        label_birthdate.grid(row=3, column=0, padx=5, pady=5)
+        label_birthdate.grid(row=2, column=0, padx=5, pady=5)
         entry_birthdate = Entry(self.research_frame)
-        entry_birthdate.grid(row=3, column=1, padx=5, pady=5)
+        entry_birthdate.grid(row=2, column=1, padx=5, pady=5)
         
         self.dynamic_entries.append(label_birthdate)
         self.dynamic_entries.append(entry_birthdate)
 
         label_deathdate = Label(self.research_frame, text='Année de décès:')
-        label_deathdate.grid(row=4, column=0, padx=5, pady=5)
+        label_deathdate.grid(row=3, column=0, padx=5, pady=5)
         entry_deathdate = Entry(self.research_frame)
-        entry_deathdate.grid(row=4, column=1, padx=5, pady=5)
+        entry_deathdate.grid(row=3, column=1, padx=5, pady=5)
         
         self.dynamic_entries.append(label_deathdate)
         self.dynamic_entries.append(entry_deathdate)
 
         label_keyword = Label(self.research_frame, text='Mot-clé:')
-        label_keyword.grid(row=5, column=0, padx=5, pady=5)
+        label_keyword.grid(row=4, column=0, padx=5, pady=5)
         entry_keyword = Entry(self.research_frame)
-        entry_keyword.grid(row=5, column=1, padx=5, pady=5)
+        entry_keyword.grid(row=4, column=1, padx=5, pady=5)
 
         self.dynamic_entries.append(label_keyword)
         self.dynamic_entries.append(entry_keyword)
 
-        self.search_button.grid(row=6, column=0, columnspan=2, pady=10)
+        self.search_button.grid(row=5, column=0, columnspan=2, pady=10)
 
     def create_company_search_fields(self):
         label_company_name = Label(self.research_frame, text='Nom:')
@@ -253,5 +248,16 @@ class SearchDataView(ctk.CTkFrame):
             if isinstance(widget, Entry):
                 value = widget.get()
                 searchdata.append(value)
+
+        if(category == "Personnalité"):
+            if(searchdata[0] != ''):
+                data = rechercher_une_personnalite(searchdata[0])
+            else:
+                data = afficher_les_personnalites()
+        elif(category == "Technologie"):
+            if(searchdata[0] != ''):
+                data = rechercher_une_technologie(searchdata[0])
+            else:
+                data = afficher_les_technologies()
         
-        self.app.switch_to_dashboard_view(category, searchdata)
+        self.app.switch_to_dashboard_view(category, data)

@@ -1,5 +1,6 @@
 import customtkinter as ctk
 from tkinter import Label, Button, Entry, Listbox, Text
+from models.ajouter import ajouter_une_personnalité
 
 class AddDataView(ctk.CTkFrame):
     def __init__(self, parent, app):
@@ -78,39 +79,31 @@ class AddDataView(ctk.CTkFrame):
         self.dynamic_entries.append(label_lastname)
         self.dynamic_entries.append(entry_lastname)
 
-        label_firstname = Label(self.addData_frame, text='Prénom:')
-        label_firstname.grid(row=2, column=0, padx=5, pady=5)
-        entry_firstname = Entry(self.addData_frame)
-        entry_firstname.grid(row=2, column=1, padx=5, pady=5)
-
-        self.dynamic_entries.append(label_firstname)
-        self.dynamic_entries.append(entry_firstname)
-
         label_birthdate = Label(self.addData_frame, text='Année de naissance:')
-        label_birthdate.grid(row=3, column=0, padx=5, pady=5)
+        label_birthdate.grid(row=2, column=0, padx=5, pady=5)
         entry_birthdate = Entry(self.addData_frame)
-        entry_birthdate.grid(row=3, column=1, padx=5, pady=5)
+        entry_birthdate.grid(row=2, column=1, padx=5, pady=5)
         
         self.dynamic_entries.append(label_birthdate)
         self.dynamic_entries.append(entry_birthdate)
 
         label_deathdate = Label(self.addData_frame, text='Année de décès:')
-        label_deathdate.grid(row=4, column=0, padx=5, pady=5)
+        label_deathdate.grid(row=3, column=0, padx=5, pady=5)
         entry_deathdate = Entry(self.addData_frame)
-        entry_deathdate.grid(row=4, column=1, padx=5, pady=5)
+        entry_deathdate.grid(row=3, column=1, padx=5, pady=5)
         
         self.dynamic_entries.append(label_deathdate)
         self.dynamic_entries.append(entry_deathdate)
 
         label_description = Label(self.addData_frame, text='Description:')
-        label_description.grid(row=5, column=0, padx=5, pady=5)
+        label_description.grid(row=4, column=0, padx=5, pady=5)
         entry_description = Text(self.addData_frame, height=5)
-        entry_description.grid(row=5, column=1, padx=5, pady=5)
+        entry_description.grid(row=4, column=1, padx=5, pady=5)
 
         self.dynamic_entries.append(label_description)
         self.dynamic_entries.append(entry_description)
 
-        self.add_button.grid(row=6, column=0, columnspan=2, pady=10)
+        self.add_button.grid(row=5, column=0, columnspan=2, pady=10)
 
     def create_company_add_fields(self):
         label_company_name = Label(self.addData_frame, text='Nom:')
@@ -257,4 +250,6 @@ class AddDataView(ctk.CTkFrame):
                 value = widget.get("1.0", "end-1c")
                 data.append(value)
         
-        self.app.switch_to_dashboard_view(category, None)
+        ajouter_une_personnalité(data[0], data[1], data[2], data[3])
+        
+        self.app.switch_to_menu_view()

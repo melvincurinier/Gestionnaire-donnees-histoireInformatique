@@ -6,14 +6,13 @@ def afficher_les_personnalites():
             host="localhost",
             database = 'my_data',
             user ='root',
-            password = 'root'
+            password = ''
         )
         cursor = conn.cursor()
         req = 'SELECT * FROM personnalites'
         cursor.execute(req)
         persolist = cursor.fetchall()
-        for perso in persolist:
-            print('Prenom : {}'.format(perso[1]), 'Date de naissance : {}'.format(perso[2]), 'Date de deces : {}'.format(perso[3]), 'Description : {}'.format(perso[4]))
+        return persolist
     except MC.Error as e:
         print(e)
     finally:
@@ -28,15 +27,14 @@ def afficher_une_personnalite(Prenom):
             host="localhost",
             database = 'my_data',
             user ='root',
-            password = 'root'
+            password = ''
         )
         cursor = conn.cursor()
         req = 'SELECT * FROM personnalites WHERE Prenom = %s'
         infos = (Prenom,)
         cursor.execute(req, infos)
         persolist = cursor.fetchall()
-        for perso in persolist:
-            print('Prenom : {}'.format(perso[1]), 'Date de naissance : {}'.format(perso[2]), 'Date de deces : {}'.format(perso[3]), 'Description : {}'.format(perso[4]))
+        return persolist
     except MC.Error as e:
         print(e)
     finally:
@@ -53,14 +51,13 @@ def afficher_les_technologies():
             host="localhost",
             database = 'my_data',
             user ='root',
-            password = 'root'
+            password = ''
         )
         cursor = conn.cursor()
         req = 'SELECT * FROM technologie'
         cursor.execute(req)
         techlist = cursor.fetchall()
-        for tech in techlist:
-            print('Nom : {}'.format(tech[1]), 'Date de création : {}'.format(tech[2]), 'Description : {}'.format(tech[3]))
+        return techlist
     except MC.Error as e:
         print(e)
     finally:
@@ -75,15 +72,14 @@ def afficher_une_technologie(Nom):
             host="localhost",
             database = 'my_data',
             user ='root',
-            password = 'root'
+            password = ''
         )
         cursor = conn.cursor()
         req = 'SELECT * FROM technologie WHERE Titre = %s'
         infos = (Nom,)
         cursor.execute(req, infos)
         techlist = cursor.fetchall()
-        for tech in techlist:
-            print('Nom : {}'.format(tech[1]), 'Date de création : {}'.format(tech[2]), 'Description : {}'.format(tech[3]))
+        return techlist
     except MC.Error as e:
         print(e)
     finally:

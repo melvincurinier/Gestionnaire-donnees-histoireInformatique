@@ -9,7 +9,7 @@ def ajouter_une_personnalité(Prenom, Date_de_naissance, Date_de_deces, Descript
             host="localhost",
             database = 'my_data',
             user = 'root',
-            password = 'root'
+            password = ''
         )
         cursor = conn.cursor()
         req = 'INSERT INTO personnalites(Id_personnalite, Prenom, Date_de_naissance, Date_de_deces, Description) VALUES (%s, %s, %s, %s, %s)'

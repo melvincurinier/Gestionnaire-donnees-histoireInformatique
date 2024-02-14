@@ -1,8 +1,10 @@
 import customtkinter as ctk
 from tkinter import ttk, Label, Button
+from models.supprimer import supprimer_une_personnalite
+
 
 class DashboardView(ctk.CTkFrame):
-    def __init__(self, parent, app, category, searchdata):
+    def __init__(self, parent, app, category, data):
         ctk.CTkFrame.__init__(self, parent)
 
         self.app = app
@@ -19,16 +21,28 @@ class DashboardView(ctk.CTkFrame):
         title_label = Label(title_frame, text='Tableau d\'informations')
         title_label.grid(row=0, column=1, padx=10)
 
-        # Tableau
-        columns = ('id', 'name', 'brief_description')
-        self.tree = ttk.Treeview(self, columns=columns, show='headings')
+        if category == "Personnalité":
+            # Tableau
+            columns = ('id', 'name', 'birthdate', 'deathdate', 'description')
+            self.tree = ttk.Treeview(self, columns=columns, show='headings')
 
-        # Définir les colonnes
-        self.tree.heading('id', text='Identifiant')
-        self.tree.heading('name', text='Nom')
-        self.tree.heading('brief_description', text='Description briève')
+            # Définir les colonnes
+            self.tree.heading('id', text='Identifiant')
+            self.tree.heading('name', text='Nom')
+            self.tree.heading('birthdate', text='Année de naissance')
+            self.tree.heading('deathdate', text='Année de décès')
+            self.tree.heading('description', text='Description')
 
-        self.tree.column('id',width=100)
+            self.tree.column('id',width=100)
+        elif category == "Technologie":
+            # Tableau
+            columns = ('id', 'title', 'creationdate', 'description')
+            self.tree = ttk.Treeview(self, columns=columns, show='headings')
+
+            self.tree.heading('id', text='Identifiant')
+            self.tree.heading('title', text='Titre')
+            self.tree.heading('creationdate', text='Année de création')
+            self.tree.heading('description', text='Description')
 
         self.tree.bind('<ButtonRelease-1>', self.on_tree_click)
 
@@ -38,17 +52,10 @@ class DashboardView(ctk.CTkFrame):
         # Frame à droite du tableau pour afficher les informations de l'item
         self.info_frame = ctk.CTkFrame(self)
         self.info_frame.pack(side='left', padx=10)
-
-        print(category)
-        print(searchdata)
-
-        data = [
-            ('1', 'Tillian Dhume', 'Respo réseau Polytech'),
-            ('2', 'Will Smith', 'Acteur américain'),
-            # Ajoutez autant de lignes que nécessaire
-        ]
-        for item_data in data:
-            self.add_item(item_data)
+      
+        if(data != None):
+            for item_data in data:
+                self.add_item(item_data)
 
     def add_item(self, data):
         # Ajoute une ligne avec les données spécifiées
@@ -56,25 +63,25 @@ class DashboardView(ctk.CTkFrame):
 
     def on_tree_click(self, event):
         item = self.tree.selection()
-
+        self.show_item_info(item)
+    
+    def show_item_info(self, item):
         if item:
             values = self.tree.item(item, 'values')
-            self.show_item_info(values)
-    
-    def show_item_info(self, item_data):
+
         # Efface les anciennes étiquettes
         for widget in self.info_frame.winfo_children():
             widget.destroy()
 
         # Ajoute des étiquettes avec les informations de l'item
         Label(self.info_frame, text='Type:').grid(row=0, column=0, sticky='e')
-        Label(self.info_frame, text=item_data[1]).grid(row=0, column=1)
+        Label(self.info_frame, text=values[1]).grid(row=0, column=1)
 
         Label(self.info_frame, text='Nom:').grid(row=1, column=0, sticky='e')
-        Label(self.info_frame, text=item_data[2]).grid(row=1, column=1)
+        Label(self.info_frame, text=values[2]).grid(row=1, column=1)
 
         Button(self.info_frame, text='Modifier', command=self.updateDataView_button_click).grid(row=3, column=0)
-        Button(self.info_frame, text='Supprimer', command=self.deleteData_button_click).grid(row=3, column=1)
+        Button(self.info_frame, text='Supprimer', command=lambda: self.deleteData_button_click(values[0], item)).grid(row=3, column=1)
     
     def addDataView_button_click(self):
         self.app.switch_to_addData_view()
@@ -85,8 +92,13 @@ class DashboardView(ctk.CTkFrame):
     def searchDataView_button_click(self):
         self.app.switch_to_searchData_view()
     
-    def deleteData_button_click(self):
-        self.app.show_deleteData_view()
+    def deleteData_button_click(self, id, item):
+        supprimer_une_personnalite(id)
+        self.tree.delete(item)
+        # Efface les anciennes étiquettes
+        for widget in self.info_frame.winfo_children():
+            widget.destroy()
+        
     
     def exportDataView_button_click(self):
         self.app.show_importData_view()
