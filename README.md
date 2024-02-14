@@ -11,9 +11,13 @@ Il faut installer tkinter de python, et mysql-connector de mysql:
     - pip install mysql-connector-python.
 
 Il faut lancer un serveur mysql:
+
     - brew services start mysql
+
 Puis :
+
     - mysql source ./models/script.sql
 
 Pour lancer l'application:
+
     - python3 src/App.py
