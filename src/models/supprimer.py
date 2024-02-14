@@ -28,7 +28,7 @@ def supprimer_une_technologie(Id_technologie):
             host="localhost",
             database = 'my_data',
             user ='root',
-            password = 'root'
+            password = ''
         )
         cursor = conn.cursor()
         req = 'DELETE FROM technologie WHERE ID_technologie = %s'
@@ -50,7 +50,7 @@ def supprimer_un_evenement(Id_evenement):
             host="localhost",
             database = 'my_data',
             user ='root',
-            password = 'root'
+            password = ''
         )
         cursor = conn.cursor()
         req = 'DELETE FROM evenement WHERE Id_Evenement = %s'
@@ -72,7 +72,7 @@ def supprimer_une_categorie(Id_categorie):
             host="localhost",
             database = 'my_data',
             user ='root',
-            password = 'root'
+            password = ''
         )
         cursor = conn.cursor()
         req = 'DELETE FROM categorie WHERE Id_categorie = %s'

@@ -6,7 +6,7 @@ def telecharger_les_personnalites():
             host="localhost",
             database = 'my_data',
             user ='root',
-            password = 'root'
+            password = ''
         )
         cursor = conn.cursor()
         with open('personnalites.csv', 'w') as f:
@@ -30,7 +30,7 @@ def telecherger_une_personnalite(Prenom):
             host="localhost",
             database = 'my_data',
             user ='root',
-            password = 'root'
+            password = ''
         )
         cursor = conn.cursor()
         with open('personnalite.csv', 'w') as f:
@@ -56,7 +56,7 @@ def telecharger_les_technologies():
             host="localhost",
             database = 'my_data',
             user ='root',
-            password = 'root'
+            password = ''
         )
         cursor = conn.cursor()
         with open('technologies.csv', 'w') as f:
@@ -80,7 +80,7 @@ def telecharger_une_technologie(Nom):
             host="localhost",
             database = 'my_data',
             user ='root',
-            password = 'root'
+            password = ''
         )
         cursor = conn.cursor()
         with open('technologie.csv', 'w') as f:
@@ -107,7 +107,7 @@ def telecharger_les_evenements():
             host="localhost",
             database = 'my_data',
             user ='root',
-            password = 'root'
+            password = ''
         )
         cursor = conn.cursor()
         with open('evenements.csv', 'w') as f:
@@ -131,7 +131,7 @@ def telecharger_un_evenement(Titre):
             host="localhost",
             database = 'my_data',
             user ='root',
-            password = 'root'
+            password = ''
         )
         cursor = conn.cursor()
         with open('evenement.csv', 'w') as f:
@@ -157,7 +157,7 @@ def telecharger_les_categories():
             host="localhost",
             database = 'my_data',
             user ='root',
-            password = 'root'
+            password = ''
         )
         cursor = conn.cursor()
         with open('categories.csv', 'w') as f:
@@ -181,7 +181,7 @@ def telecharger_une_categorie(Nom):
             host="localhost",
             database = 'my_data',
             user ='root',
-            password = 'root'
+            password = ''
         )
         cursor = conn.cursor()
         with open('categorie.csv', 'w') as f:

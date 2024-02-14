@@ -1,6 +1,7 @@
 import customtkinter as ctk
 from tkinter import ttk, Label, Button
 from models.supprimer import *
+from models.telecharger import *
 
 
 class DashboardView(ctk.CTkFrame):
@@ -19,6 +20,8 @@ class DashboardView(ctk.CTkFrame):
         title_label = Label(title_frame, text='Tableau d\'informations')
         title_label.grid(row=0, column=1, padx=10)
 
+        Button(title_frame, text='Exporter', command=lambda: self.exportDataView_button_click).grid(row=0, column=2)
+
         if self.category == "Personnalité":
             columns = ('id', 'name', 'birthdate', 'deathdate', 'description')
             self.tree = ttk.Treeview(self, columns=columns, show='headings')
@@ -35,20 +38,20 @@ class DashboardView(ctk.CTkFrame):
             self.tree.column('deathdate',width=100)
             self.tree.column('description',width=200)
         elif self.category == "Technologie":
-            columns = ('id', 'title', 'creationdate', 'type', 'description')
+            columns = ('id', 'title', 'creationdate', 'description', 'type')
             self.tree = ttk.Treeview(self, columns=columns, show='headings')
 
             self.tree.heading('id', text='Identifiant')
             self.tree.heading('title', text='Titre')
             self.tree.heading('creationdate', text='Année de création')
-            self.tree.heading('type', text='Type')
             self.tree.heading('description', text='Description')
+            self.tree.heading('type', text='Type')
 
             self.tree.column('id',width=100)
             self.tree.column('title',width=200)
             self.tree.column('creationdate',width=100)
-            self.tree.column('type',width=200)
             self.tree.column('description',width=200)
+            self.tree.column('type',width=200)
         elif self.category == "Evénement":
             columns = ('id', 'title', 'date', 'location', 'description')
             self.tree = ttk.Treeview(self, columns=columns, show='headings')
@@ -154,7 +157,12 @@ class DashboardView(ctk.CTkFrame):
             widget.destroy()
     
     def exportDataView_button_click(self):
-        self.app.show_importData_view()
+        if self.category == "Personnalité":
+            telecharger_les_personnalites()
+        elif self.category == "Technologie":
+            telecharger_les_technologies()
+        elif self.category == "Evénement":
+            telecharger_les_evenements()
     
     def importDataView_button_click(self):
-        self.app.show_exportData_view()
+        self.app.show_importData_view()

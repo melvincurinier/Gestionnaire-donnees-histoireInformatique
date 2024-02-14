@@ -79,7 +79,7 @@ def ajouter_une_categorie(Nom):
             host="localhost",
             database = 'my_data',
             user ='root',
-            password = 'root'
+            password = ''
         )
         cursor = conn.cursor()
         req = 'INSERT INTO categorie(Id_categorie, Nom) VALUES (%s, %s)'

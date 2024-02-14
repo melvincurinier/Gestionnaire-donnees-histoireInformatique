@@ -252,7 +252,7 @@ class AddDataView(ctk.CTkFrame):
         if category == "Personnalité":
             ajouter_une_personnalité(data[0], data[1], data[2], data[3])
         elif category == "Technologie":
-            ajouter_une_technologie(data[0], data[1], data[2], data[3])
+            ajouter_une_technologie(data[0], data[2], data[3], data[1])
         elif category == "Evénement":
             ajouter_un_evenement(data[0], data[1], data[2], data[3])
         
