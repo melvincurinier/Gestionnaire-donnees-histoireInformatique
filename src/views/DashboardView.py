@@ -20,12 +20,11 @@ class DashboardView(ctk.CTkFrame):
         title_label.grid(row=0, column=1, padx=10)
 
         # Tableau
-        columns = ('id', 'type', 'name', 'brief_description')
+        columns = ('id', 'name', 'brief_description')
         self.tree = ttk.Treeview(self, columns=columns, show='headings')
 
         # Définir les colonnes
         self.tree.heading('id', text='Identifiant')
-        self.tree.heading('type', text='Type')
         self.tree.heading('name', text='Nom')
         self.tree.heading('brief_description', text='Description briève')
 
@@ -41,8 +40,8 @@ class DashboardView(ctk.CTkFrame):
         self.info_frame.pack(side='left', padx=10)
 
         data = [
-            ('1', 'Personnalité', 'Tillian Dhume', 'Respo réseau Polytech'),
-            ('2', 'Personnalité', 'Will Smith', 'Acteur américain'),
+            ('1', 'Tillian Dhume', 'Respo réseau Polytech'),
+            ('2', 'Will Smith', 'Acteur américain'),
             # Ajoutez autant de lignes que nécessaire
         ]
         for item_data in data:
@@ -70,9 +69,6 @@ class DashboardView(ctk.CTkFrame):
 
         Label(self.info_frame, text='Nom:').grid(row=1, column=0, sticky='e')
         Label(self.info_frame, text=item_data[2]).grid(row=1, column=1)
-
-        Label(self.info_frame, text='Description briève:').grid(row=2, column=0, sticky='e')
-        Label(self.info_frame, text=item_data[3]).grid(row=2, column=1)
 
         Button(self.info_frame, text='Modifier', command=self.updateDataView_button_click).grid(row=3, column=0)
         Button(self.info_frame, text='Supprimer', command=self.deleteData_button_click).grid(row=3, column=1)

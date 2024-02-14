@@ -69,7 +69,6 @@ class SearchDataView(ctk.CTkFrame):
                 self.create_price_search_fields()
 
     def clear_dynamic_entries(self):
-        # Efface les champs de recherche précédents
         for entry in self.dynamic_entries:
             entry.destroy()
         self.dynamic_entries = []

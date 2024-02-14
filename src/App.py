@@ -9,7 +9,7 @@ from views.MenuView import MenuView
 class App:
     def __init__(self):
         self.root_tk = ctk.CTk()
-        self.root_tk.geometry('1000x500')
+        self.root_tk.geometry('1200x600')
         self.root_tk.resizable(False, False)
         self.root_tk.title("Gestionnaire de données sur l'histoire informatique")
 
