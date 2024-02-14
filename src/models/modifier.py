@@ -30,7 +30,7 @@ def modifier_date_de_naissance_une_personnalite(Date_de_naissance, Id_personnali
             host="localhost",
             database = 'my_data',
             user ='root',
-            password = 'root'
+            password = ''
         )
         cursor = conn.cursor()
         req = 'UPDATE personnalites SET Date_de_naissance = %s WHERE Id_personnalite = %s'
@@ -53,7 +53,7 @@ def modifier_date_de_deces_une_personnalite(Date_de_deces, Id_personnalite):
             host="localhost",
             database = 'my_data',
             user ='root',
-            password = 'root'
+            password = ''
         )
         cursor = conn.cursor()
         req = 'UPDATE personnalites SET Date_de_deces = %s WHERE Id_personnalite = %s'
@@ -76,7 +76,7 @@ def modifier_description_une_personnalite(Description, Id_personnalite):
             host="localhost",
             database = 'my_data',
             user ='root',
-            password = 'root'
+            password = ''
         )
         cursor = conn.cursor()
         req = 'UPDATE personnalites SET Description = %s WHERE Id_personnalite = %s'
@@ -98,7 +98,7 @@ def modifier_nom_une_technologie(Nom, Id_technologie):
             host="localhost",
             database = 'my_data',
             user ='root',
-            password = 'root'
+            password = ''
         )
         cursor = conn.cursor()
         req = 'UPDATE technologie SET Titre = %s WHERE ID_technologie = %s'
@@ -120,7 +120,7 @@ def modifier_date_de_creation_une_technologie(Date_de_creation, Id_technologie):
             host="localhost",
             database = 'my_data',
             user ='root',
-            password = 'root'
+            password = ''
         )
         cursor = conn.cursor()
         req = 'UPDATE technologie SET Date = %s WHERE ID_technologie = %s'
@@ -143,7 +143,7 @@ def modifier_description_une_technologie(Description, Id_technologie):
             host="localhost",
             database = 'my_data',
             user ='root',
-            password = 'root'
+            password = ''
         )
         cursor = conn.cursor()
         req = 'UPDATE technologie SET Description = %s WHERE ID_technologie = %s'
@@ -165,7 +165,7 @@ def modifier_type_une_technologie(Type, Id_technologie):
             host="localhost",
             database = 'my_data',
             user ='root',
-            password = 'root'
+            password = ''
         )
         cursor = conn.cursor()
         req = 'UPDATE technologie SET Type = %s WHERE ID_technologie = %s'
@@ -187,7 +187,7 @@ def modifier_titre_un_evenement(Titre, Id_evenement):
             host="localhost",
             database = 'my_data',
             user ='root',
-            password = 'root'
+            password = ''
         )
         cursor = conn.cursor()
         req = 'UPDATE evenement SET Titre = %s WHERE Id_Evenement = %s'
@@ -209,7 +209,7 @@ def modifier_date_un_evenement(Date, Id_evenement):
             host="localhost",
             database = 'my_data',
             user ='root',
-            password = 'root'
+            password = ''
         )
         cursor = conn.cursor()
         req = 'UPDATE evenement SET Date = %s WHERE Id_Evenement = %s'
@@ -232,7 +232,7 @@ def modifier_lieu_un_evenement(Lieu, Id_evenement):
             host="localhost",
             database = 'my_data',
             user ='root',
-            password = 'root'
+            password = ''
         )
         cursor = conn.cursor()
         req = 'UPDATE evenement SET Lieu = %s WHERE Id_Evenement = %s'
@@ -254,7 +254,7 @@ def modifier_description_un_evenement(Description, Id_evenement):
             host="localhost",
             database = 'my_data',
             user ='root',
-            password = 'root'
+            password = ''
         )
         cursor = conn.cursor()
         req = 'UPDATE evenement SET Description = %s WHERE Id_Evenement = %s'
@@ -277,7 +277,7 @@ def modifier_nom_une_categorie(Nom, Id_categorie):
             host="localhost",
             database = 'my_data',
             user ='root',
-            password = 'root'
+            password = ''
         )
         cursor = conn.cursor()
         req = 'UPDATE categorie SET Nom = %s WHERE Id_categorie = %s'

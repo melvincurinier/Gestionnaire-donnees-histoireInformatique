@@ -38,8 +38,8 @@ class App:
     def show_importData_view(self):
         print('Import Data !')
     
-    def show_updateData_view(self):
-        updateData_view = UpdateDataView(self.container, self)
+    def show_updateData_view(self, category, updatedata):
+        updateData_view = UpdateDataView(self.container, self, category, updatedata)
         updateData_view.pack()
     
     def show_exportData_view(self):
@@ -60,9 +60,9 @@ class App:
         self.clear_container()
         self.show_addData_view()
     
-    def switch_to_updateData_view(self):
+    def switch_to_updateData_view(self, category, updatedata):
         self.clear_container()
-        self.show_updateData_view()
+        self.show_updateData_view(category, updatedata)
     
     def switch_to_searchData_view(self):
         self.clear_container()

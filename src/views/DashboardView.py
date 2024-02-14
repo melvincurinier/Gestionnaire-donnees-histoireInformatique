@@ -130,14 +130,14 @@ class DashboardView(ctk.CTkFrame):
             Label(self.info_frame, text='Description:').grid(row=3, column=0, sticky='e')
             Label(self.info_frame, text=values[4], wraplength=250).grid(row=3, column=1)
 
-        Button(self.info_frame, text='Modifier', command=self.updateDataView_button_click).grid(row=4, column=1)
+        Button(self.info_frame, text='Modifier', command=lambda: self.updateDataView_button_click(self.category, values)).grid(row=4, column=1)
         Button(self.info_frame, text='Supprimer', command=lambda: self.deleteData_button_click(values[0], item)).grid(row=5, column=1)
     
     def addDataView_button_click(self):
         self.app.switch_to_addData_view()
 
-    def updateDataView_button_click(self):
-        self.app.switch_to_updateData_view()
+    def updateDataView_button_click(self, category, values):
+        self.app.switch_to_updateData_view(category, values)
     
     def searchDataView_button_click(self):
         self.app.switch_to_searchData_view()
