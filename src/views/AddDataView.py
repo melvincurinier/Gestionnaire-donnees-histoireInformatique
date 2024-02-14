@@ -1,6 +1,6 @@
 import customtkinter as ctk
 from tkinter import Label, Button, Entry, Listbox, Text
-from models.ajouter import ajouter_une_personnalité
+from models.ajouter import *
 
 class AddDataView(ctk.CTkFrame):
     def __init__(self, parent, app):
@@ -157,7 +157,7 @@ class AddDataView(ctk.CTkFrame):
         self.dynamic_entries.append(label_type)
         self.dynamic_entries.append(entry_type)
 
-        label_year = Label(self.addData_frame, text='Année de développement:')
+        label_year = Label(self.addData_frame, text='Année de création:')
         label_year.grid(row=3, column=0, padx=5, pady=5)
         entry_year = Entry(self.addData_frame)
         entry_year.grid(row=3, column=1, padx=5, pady=5)
@@ -249,7 +249,11 @@ class AddDataView(ctk.CTkFrame):
             if isinstance(widget, Text):
                 value = widget.get("1.0", "end-1c")
                 data.append(value)
-        
-        ajouter_une_personnalité(data[0], data[1], data[2], data[3])
+        if category == "Personnalité":
+            ajouter_une_personnalité(data[0], data[1], data[2], data[3])
+        elif category == "Technologie":
+            ajouter_une_technologie(data[0], data[1], data[2], data[3])
+        elif category == "Evénement":
+            ajouter_un_evenement(data[0], data[1], data[2], data[3])
         
         self.app.switch_to_menu_view()

@@ -35,19 +35,19 @@ class DashboardView(ctk.CTkFrame):
             self.tree.column('deathdate',width=100)
             self.tree.column('description',width=200)
         elif self.category == "Technologie":
-            columns = ('id', 'title', 'type', 'creationdate', 'description')
+            columns = ('id', 'title', 'creationdate', 'type', 'description')
             self.tree = ttk.Treeview(self, columns=columns, show='headings')
 
             self.tree.heading('id', text='Identifiant')
             self.tree.heading('title', text='Titre')
-            self.tree.heading('type', text='Type')
             self.tree.heading('creationdate', text='Année de création')
+            self.tree.heading('type', text='Type')
             self.tree.heading('description', text='Description')
 
             self.tree.column('id',width=100)
-            self.tree.column('type',width=100)
-            self.tree.column('birthdate',width=100)
+            self.tree.column('title',width=200)
             self.tree.column('creationdate',width=100)
+            self.tree.column('type',width=200)
             self.tree.column('description',width=200)
         elif self.category == "Evénement":
             columns = ('id', 'title', 'date', 'location', 'description')
@@ -60,7 +60,7 @@ class DashboardView(ctk.CTkFrame):
             self.tree.heading('description', text='Description')
 
             self.tree.column('id',width=100)
-            self.tree.column('title',width=100)
+            self.tree.column('title',width=200)
             self.tree.column('date',width=100)
             self.tree.column('location',width=100)
             self.tree.column('description',width=200)
@@ -104,7 +104,7 @@ class DashboardView(ctk.CTkFrame):
             Label(self.info_frame, text=values[3]).grid(row=2, column=1)
 
             Label(self.info_frame, text='Description:').grid(row=3, column=0, sticky='e')
-            Label(self.info_frame, text=values[4]).grid(row=3, column=1)
+            Label(self.info_frame, text=values[4],  wraplength=250).grid(row=3, column=1)
         elif self.category == "Technologie":
             Label(self.info_frame, text='Title:').grid(row=0, column=0, sticky='e')
             Label(self.info_frame, text=values[1]).grid(row=0, column=1)
@@ -116,7 +116,7 @@ class DashboardView(ctk.CTkFrame):
             Label(self.info_frame, text=values[2]).grid(row=2, column=1)
 
             Label(self.info_frame, text='Description:').grid(row=3, column=0, sticky='e')
-            Label(self.info_frame, text=values[3]).grid(row=3, column=1)
+            Label(self.info_frame, text=values[3], wraplength=250).grid(row=3, column=1)
         elif self.category == "Evénement":
             Label(self.info_frame, text='Title:').grid(row=0, column=0, sticky='e')
             Label(self.info_frame, text=values[1]).grid(row=0, column=1)
